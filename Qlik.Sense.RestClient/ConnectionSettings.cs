@@ -186,6 +186,9 @@ namespace Qlik.Sense.RestClient
                 credentialCache.Add(this.BaseUri, "ntlm", credential);
                 CustomCredential = credentialCache;
             }
+            // when CustomHeaders already contains User-Agent key it throws exception
+            if (CustomHeaders.ContainsKey("User-Agent"))
+               CustomHeaders.Remove("User-Agent");
             CustomHeaders.Add("User-Agent", "Windows");
             _isConfigured = true;
         }

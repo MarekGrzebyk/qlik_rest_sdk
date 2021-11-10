@@ -159,7 +159,8 @@ namespace Qlik.Sense.RestClient
         public async Task<string> PostStringAsync(Uri uri, string body)
         {
             var client = _client.Value;
-            var rbody = new StringContent(body, Encoding.ASCII, _connectionSettings.ContentType);
+            //var rbody = new StringContent(body, Encoding.ASCII, _connectionSettings.ContentType);
+            var rbody = new StringContent(body, Encoding.UTF8, _connectionSettings.ContentType);
             rbody.Headers.ContentType = new MediaTypeWithQualityHeaderValue(_connectionSettings.ContentType);
             var rsp = await client.PostAsync(AddXrefKey(UseXrfKey, uri, _xrfkey), rbody).ConfigureAwait(false);
             if (rsp.IsSuccessStatusCode)
@@ -173,7 +174,8 @@ namespace Qlik.Sense.RestClient
         public async Task<string> PutStringAsync(Uri uri, string body)
         {
             var client = _client.Value;
-            var rbody = new StringContent(body, Encoding.ASCII, _connectionSettings.ContentType);
+            //var rbody = new StringContent(body, Encoding.ASCII, _connectionSettings.ContentType);
+            var rbody = new StringContent(body, Encoding.UTF8, _connectionSettings.ContentType);
             rbody.Headers.ContentType = new MediaTypeWithQualityHeaderValue(_connectionSettings.ContentType);
             var rsp = await client.PutAsync(AddXrefKey(UseXrfKey, uri, _xrfkey), rbody).ConfigureAwait(false);
             if (rsp.IsSuccessStatusCode)
