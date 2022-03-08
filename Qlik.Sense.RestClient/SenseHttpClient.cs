@@ -12,7 +12,7 @@ namespace Qlik.Sense.RestClient
     public class SenseHttpClient
     {
         private readonly ConnectionSettings _connectionSettings;
-#if (NETCOREAPP2_1)
+#if (NET5_0_OR_GREATER)
         private readonly HttpClientHandler _clientHandler;
 #else
         private readonly WebRequestHandler _clientHandler;
@@ -24,7 +24,7 @@ namespace Qlik.Sense.RestClient
         internal SenseHttpClient(ConnectionSettings connectionSettings)
         {
             _connectionSettings = connectionSettings;
-#if (NETCOREAPP2_1)
+#if (NET5_0_OR_GREATER)
             _clientHandler = new HttpClientHandler();
 #else
             _clientHandler = new WebRequestHandler();
@@ -42,7 +42,7 @@ namespace Qlik.Sense.RestClient
 
         private void DeactivateCertificateValidation()
         {
-#if (NETCOREAPP2_1)
+#if (NET5_0_OR_GREATER)
             _clientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
 #else
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };

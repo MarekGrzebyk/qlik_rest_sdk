@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>.NET50</TargetFrameworks>
   </PropertyGroup>
 
     <ItemGroup>
@@ -24,10 +24,6 @@
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="System.Net.Http" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
         <Reference Include="System.Net.Http.WebRequest" />
