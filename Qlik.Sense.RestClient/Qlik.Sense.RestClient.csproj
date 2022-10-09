@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>.NET50</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
   </PropertyGroup>
 
     <ItemGroup>
@@ -25,7 +25,7 @@
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
-    <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'NET452'">
         <Reference Include="System.Net.Http.WebRequest" />
     </ItemGroup>
 </Project>

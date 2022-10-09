@@ -53,6 +53,8 @@ namespace Qlik.Sense.RestClient
         {
 #if (NET452)
             ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+//#else
+//            _clientHandler.SslProtocols = System.Security.Authentication.SslProtocols.Tls | System.Security.Authentication.SslProtocols.Tls11 | System.Security.Authentication.SslProtocols.Tls12;
 #endif
             if (_connectionSettings.CertificateValidation == false)
                 DeactivateCertificateValidation();
@@ -234,7 +236,11 @@ namespace Qlik.Sense.RestClient
         {
             const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             var sb = new StringBuilder(16);
+#if NET6_0_OR_GREATER
+            using (var provider = RandomNumberGenerator.Create())
+#else
             using (var provider = new RNGCryptoServiceProvider())
+#endif
             {
                 var randomSequence = new byte[16];
                 provider.GetBytes(randomSequence);
