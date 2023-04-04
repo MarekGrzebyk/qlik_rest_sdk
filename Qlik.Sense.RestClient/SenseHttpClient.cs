@@ -56,6 +56,8 @@ namespace Qlik.Sense.RestClient
 //#else
 //            _clientHandler.SslProtocols = System.Security.Authentication.SslProtocols.Tls | System.Security.Authentication.SslProtocols.Tls11 | System.Security.Authentication.SslProtocols.Tls12;
 #endif
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             if (_connectionSettings.CertificateValidation == false)
                 DeactivateCertificateValidation();
 

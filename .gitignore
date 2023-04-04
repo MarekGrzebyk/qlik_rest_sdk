@@ -5,3 +5,4 @@
 **/*.nupkg
 **/packages
 Qlik.Sense.RestClient/Qlik.Sense.RestClient.nuspec
+/.vs/MG_qlik_rest_sdk/v17
